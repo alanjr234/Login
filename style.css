@@ -1,0 +1,227 @@
+
+/* =========================
+   Global Styles
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #333;
+}
+
+
+/* =========================
+   Login & Signup Form
+========================= */
+
+form {
+    background: white;
+    width: 380px;
+    padding: 35px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Form heading */
+
+form::before {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* Input labels / text */
+
+form br {
+    display: none;
+}
+
+form input {
+    width: 100%;
+    padding: 12px 14px;
+
+    margin-top: 8px;
+    margin-bottom: 18px;
+
+    border: 1px solid #ccc;
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+
+/* Input focus */
+
+form input:focus {
+    border-color: #667eea;
+
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+
+/* Buttons */
+
+button {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #667eea;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: #5568d9;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   Messages
+========================= */
+
+
+.signup-link {
+    display: block;
+    margin-top: 18px;
+
+    text-align: center;
+
+    color: #667eea;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.signup-link:hover {
+    color: #4b5fc7;
+    text-decoration: underline;
+}
+
+#message {
+    margin-top: 12px;
+
+    text-align: center;
+
+    color: red;
+
+    font-size: 14px;
+}
+
+
+/* Login error */
+
+form + #message {
+    width: 380px;
+}
+
+
+/* =========================
+   Home Page
+========================= */
+
+.home-container {
+    background: white;
+
+    width: 500px;
+
+    padding: 50px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.home-container h1 {
+    color: #333;
+
+    margin-bottom: 15px;
+}
+
+.home-container p {
+    color: #666;
+
+    margin-bottom: 25px;
+}
+
+
+/* Logout button */
+
+.logout-btn {
+    display: inline-block;
+
+    padding: 11px 25px;
+
+    background: #667eea;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background: #5568d9;
+}
+
+
+/* =========================
+   Mobile Responsive
+========================= */
+
+@media (max-width: 500px) {
+
+    form {
+        width: 90%;
+        padding: 25px;
+    }
+
+    form + #message {
+        width: 90%;
+    }
+
+    .home-container {
+        width: 90%;
+        padding: 35px 25px;
+    }
+}
