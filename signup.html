@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Sign Up</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
     <form id="signupForm">
+
         Enter username
-        <input type="text" id="username" required><br>
+        <input type="text" id="username" required>
 
         Enter Email
-        <input type="email" id="email" required><br>
+        <input type="email" id="email" required>
 
         Enter password
-        <input type="password" id="password" required><br>
+        <input type="password" id="password" required>
 
         <button type="submit">Sign Up</button>
 
@@ -23,15 +30,30 @@
             Already have an account?
             <a href="index.html">Login</a>
         </p>
+
     </form>
-    <div id="message"></div>
+
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-        import { getFirestore, doc, setDoc ,setLogLevel } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
-        // Your Firebase project configuration
+        import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+        import {
+            getAuth,
+            createUserWithEmailAndPassword
+        }
+        from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+        import {
+            getFirestore,
+            doc,
+            setDoc,
+            setLogLevel
+        }
+        from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
         const firebaseConfig = {
             apiKey: "AIzaSyAP-Yf4VVIE5xHUsid1c899jukVN7pgj7A",
             authDomain: "login-16735.firebaseapp.com",
@@ -41,40 +63,85 @@
             appId: "1:835789368841:web:c0d976bdf62f806ff892d8"
         };
 
-        // Initialize Firebase services
+
         const app = initializeApp(firebaseConfig);
+
         const auth = getAuth(app);
+
         const db = getFirestore(app);
+
         setLogLevel('debug');
-        document.getElementById("signupForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
 
-            const username = document.getElementById("username").value;
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const messageEl = document.getElementById("message");
 
-            try {
-                console.log("1. Attempting to create user...");
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-                console.log("2. Auth success! UID:", user.uid);
+        document
+            .getElementById("signupForm")
+            .addEventListener("submit", async (e) => {
 
-                console.log("3. Attempting Firestore write...");
-                await setDoc(doc(db, "users", user.uid), {
-                    username: username,
-                    email: email,
-                    createdAt: new Date().toISOString()
-                });
-                console.log("4. Firestore write success!"); // If this doesn't print, it's hanging here!
+                e.preventDefault();
 
-                window.location.href = "home.html";
-            } catch (error) {
-                console.error("Catch block caught an error:", error);
-                messageEl.innerText = "Error: " + error.message;
-            }
+                const username =
+                    document.getElementById("username").value;
 
-        });
+                const email =
+                    document.getElementById("email").value;
+
+                const password =
+                    document.getElementById("password").value;
+
+                const messageEl =
+                    document.getElementById("message");
+
+
+                try {
+
+                    console.log("1. Attempting to create user...");
+
+                    const userCredential =
+                        await createUserWithEmailAndPassword(
+                            auth,
+                            email,
+                            password
+                        );
+
+                    const user = userCredential.user;
+
+                    console.log(
+                        "2. Auth success! UID:",
+                        user.uid
+                    );
+
+
+                    console.log("3. Attempting Firestore write...");
+
+                    await setDoc(
+                        doc(db, "users", user.uid),
+                        {
+                            username: username,
+                            email: email,
+                            createdAt: new Date().toISOString()
+                        }
+                    );
+
+
+                    console.log("4. Firestore write success!");
+
+                    window.location.href = "home.html";
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Catch block caught an error:",
+                        error
+                    );
+
+                    messageEl.innerText =
+                        "Error: " + error.message;
+                }
+
+            });
+
     </script>
+
 </body>
 </html>
