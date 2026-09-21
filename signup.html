@@ -8,11 +8,21 @@
     <form id="signupForm">
         Enter username
         <input type="text" id="username" required><br>
+
         Enter Email
         <input type="email" id="email" required><br>
+
         Enter password
         <input type="password" id="password" required><br>
+
         <button type="submit">Sign Up</button>
+
+        <div id="message"></div>
+
+        <p>
+            Already have an account?
+            <a href="index.html">Login</a>
+        </p>
     </form>
     <div id="message"></div>
 
@@ -58,7 +68,7 @@
                 });
                 console.log("4. Firestore write success!"); // If this doesn't print, it's hanging here!
 
-                messageEl.innerText = "Account created and user added successfully!";
+                window.location.href = "home.html";
             } catch (error) {
                 console.error("Catch block caught an error:", error);
                 messageEl.innerText = "Error: " + error.message;
